@@ -1,0 +1,25 @@
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secrets: NEVER commit these
+.env
+*.key
+*.pem
+
+# Data and generated output (we document where to download data instead)
+*.csv
+demo.txt
+loan_charts.png
+
+# Salesforce CLI local state and tooling
+.sf/
+.sfdx/
+node_modules/
+
+# Editor and OS clutter
+.vscode/
+Thumbs.db
+.DS_Store
