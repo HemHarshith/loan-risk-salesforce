@@ -24,3 +24,8 @@ node_modules/
 .vscode/
 Thumbs.db
 .DS_Store
+
+# Local helper scripts and test caches
+clear.apex
+rescore.apex
+.pytest_cache/
