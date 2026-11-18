@@ -1,1 +1,0 @@
-Database.executeBatch(new LoanBandBatch(0.30, 0.50), 200);
