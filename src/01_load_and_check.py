@@ -16,7 +16,8 @@ def quality_report(df):
     print("missing per column:\n", df.isna().sum()[lambda s: s > 0])
     print("duplicate rows:", df.duplicated().sum())
     print("default rate:", round(df["default"].mean(), 3))
-    print(df.dtypes.value_counts())
+    print("numeric cols:", df.select_dtypes("number").shape[1],
+          "| categorical cols:", df.select_dtypes(exclude="number").shape[1])
     print(df.describe().T[["min", "mean", "max"]])
 
 if __name__ == "__main__":
