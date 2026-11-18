@@ -1,0 +1,27 @@
+<!-- Visualforce page: HTML plus {!expressions} that read from the controller. -->
+<!-- lightningStylesheets makes it use the modern Salesforce look. -->
+<apex:page controller="LoanRiskSummaryController" lightningStylesheets="true" title="Loan Risk Summary">
+    <apex:sectionHeader title="Loan Applications" subtitle="Risk Summary"/>
+
+    <apex:pageBlock title="Loans by risk band (total: {!totalLoans})">
+        <!-- pageBlockTable loops over a list: "bandCounts" from the controller, one row per item "b". -->
+        <apex:pageBlockTable value="{!bandCounts}" var="b">
+            <apex:column headerValue="Risk band" value="{!b.band}"/>
+            <apex:column headerValue="Loans"     value="{!b.total}"/>
+            <apex:column headerValue="Share (%)" value="{!b.percent}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Ten highest-risk loans">
+        <apex:pageBlockTable value="{!topLoans}" var="l">
+            <apex:column headerValue="Application">
+                <!-- target="_top" opens the record in the full browser window, not inside this page -->
+                <apex:outputLink value="/{!l.Id}" target="_top">{!l.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!l.Risk_Band__c}"/>
+            <apex:column value="{!l.Risk_Score__c}"/>
+            <apex:column value="{!l.Credit_Amount__c}"/>
+            <apex:column value="{!l.Purpose__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
