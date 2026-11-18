@@ -13,6 +13,7 @@ __pycache__/
 *.csv
 demo.txt
 loan_charts.png
+data/loans.db
 
 # Salesforce CLI local state and tooling
 .sf/
