@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+  <label>Loan Risk Access</label><hasActivationRequired>false</hasActivationRequired>
+  <objectPermissions><allowCreate>true</allowCreate><allowDelete>true</allowDelete><allowEdit>true</allowEdit>
+    <allowRead>true</allowRead><modifyAllRecords>true</modifyAllRecords><object>Loan_Application__c</object>
+    <viewAllRecords>true</viewAllRecords></objectPermissions>
+  <fieldPermissions><editable>true</editable><field>Loan_Application__c.Applicant_Age__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>Loan_Application__c.Credit_Amount__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>Loan_Application__c.Duration_Months__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>Loan_Application__c.Purpose__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>Loan_Application__c.Risk_Score__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>Loan_Application__c.Risk_Band__c</field><readable>true</readable></fieldPermissions>
+</PermissionSet>
