@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <eventType>StandardVolume</eventType>
+    <label>High Risk Loan</label>
+    <pluralLabel>High Risk Loans</pluralLabel>
+    <!-- PublishAfterCommit: the event is sent only if the loan insert succeeds, so no false alerts -->
+    <publishBehavior>PublishAfterCommit</publishBehavior>
+</CustomObject>

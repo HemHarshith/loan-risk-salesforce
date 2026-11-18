@@ -26,9 +26,7 @@ global with sharing class LoanScoreService {
     // So Medium and High are the loans the model flags for review.
     @TestVisible
     private static String bandFor(Decimal score) {
-        if (score >= 0.5)  { return 'High'; }
-        if (score >= 0.15) { return 'Medium'; }
-        return 'Low';
+        return LoanBands.bandFor(score, 0.15, 0.5);
     }
 
     // @HttpPost = runs when someone sends a POST request to the URL above.
@@ -59,6 +57,18 @@ global with sharing class LoanScoreService {
             ));
         }
         insert records;   // one DML statement for the whole batch
+
+        // Publish one event per High-band loan. Ids exist only after the insert, so this must come after it.
+        List<High_Risk_Loan__e> events = new List<High_Risk_Loan__e>();
+        for (Loan_Application__c rec : records) {
+            if (rec.Risk_Band__c == 'High') {
+                events.add(new High_Risk_Loan__e(
+                    Loan_Id__c = rec.Id, Risk_Score__c = rec.Risk_Score__c, Risk_Band__c = rec.Risk_Band__c));
+            }
+        }
+        if (!events.isEmpty()) {
+            EventBus.publish(events);   // one call for the whole list
+        }
 
         Result r = new Result();
         r.created = records.size();

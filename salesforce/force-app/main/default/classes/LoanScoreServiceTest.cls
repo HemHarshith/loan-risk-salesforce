@@ -47,4 +47,16 @@ private class LoanScoreServiceTest {
             System.assert(e.getMessage().contains('between 0 and 1'));
         }
     }
+
+    @IsTest
+    static void highRiskLoanCreatesReviewTask() {
+        Test.startTest();
+        LoanScoreService.createScored(new List<LoanScoreService.LoanInput>{ makeLoan(0.80), makeLoan(0.05) });
+        Test.getEventBus().deliver();   // in tests, events are held back until you deliver them on purpose
+        Test.stopTest();
+
+        List<Task> tasks = [SELECT Priority FROM Task];
+        System.assertEquals(1, tasks.size(), 'Only the high-risk loan should get a task');
+        System.assertEquals('High', tasks[0].Priority);
+    }
 }

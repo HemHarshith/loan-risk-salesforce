@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>High Risk Loan Events</label>
+    <hasActivationRequired>false</hasActivationRequired>
+    <!-- Create = may publish the event, Read = may subscribe to it -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate><allowRead>true</allowRead>
+        <allowDelete>false</allowDelete><allowEdit>false</allowEdit>
+        <modifyAllRecords>false</modifyAllRecords><viewAllRecords>false</viewAllRecords>
+        <object>High_Risk_Loan__e</object>
+    </objectPermissions>
+</PermissionSet>
