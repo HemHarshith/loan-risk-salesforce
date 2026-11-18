@@ -100,11 +100,11 @@ Add the **Loan Risk Card** component to the Loan Application record page in Ligh
 **Fairness check.** At the 0.15 cut-off the model flags younger applicants more often:
 
 | Age band | Loans | Flag rate | Recall | Precision |
-|---|---|---|---|---|
-| under 25 | 39 | 77% | 0.947 | 0.600 |
-| 25-34 | 66 | 67% | 0.864 | 0.432 |
-| 35-49 | 63 | 59% | 0.923 | 0.324 |
-| 50+ | 32 | 56% | 0.667 | 0.222 |
+
+| under 25 |   39  |    77%    |  0.947 |   0.600   |
+| 25-34    |   66  |    67%    |  0.864 |   0.432   |
+| 35-49    |   63  |    59%    |  0.923 |   0.324   |
+| 50+      |   32  |    56%    |  0.667 |   0.222   |
 
 The lowest-to-highest flag-rate ratio is 0.73. Part of the gap reflects higher default rates among younger borrowers in this sample, and the groups are small, so no firm conclusion can be drawn. Age is also a model input, which a real lender may not be allowed to use. A next step would be retraining without age and comparing results.
 
