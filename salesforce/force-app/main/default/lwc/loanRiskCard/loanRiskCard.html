@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Loan Risk" icon-name="standard:product_item">
+        <div class="slds-p-horizontal_medium">
+            <!-- lwc:if shows a block only when its condition is true -->
+            <template lwc:if={hasData}>
+                <p class="slds-m-bottom_x-small">
+                    <span class={badgeClass}>{band}</span>
+                    <span class="slds-m-left_small big-number">{riskPercent}%</span>
+                    <span class="slds-text-color_weak"> estimated default risk</span>
+                </p>
+                <lightning-progress-bar value={riskPercent} size="large"></lightning-progress-bar>
+                <p class="slds-m-top_small">{advice}</p>
+                <p class="slds-m-top_small slds-text-color_weak">
+                    Purpose: {purpose} | Amount:
+                    <lightning-formatted-number value={amount} maximum-fraction-digits="0">
+                    </lightning-formatted-number>
+                </p>
+            </template>
+            <template lwc:elseif={hasError}>
+                <p class="slds-text-color_error">Could not load this loan. Check field access.</p>
+            </template>
+            <template lwc:else>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>
